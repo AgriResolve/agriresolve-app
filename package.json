@@ -1,0 +1,11 @@
+{
+  "name": "agriresolve-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter agriresolve-web dev",
+    "build": "pnpm --filter agriresolve-web build",
+    "start": "pnpm --filter agriresolve-web start",
+    "lint": "pnpm --filter agriresolve-web lint"
+  }
+}
