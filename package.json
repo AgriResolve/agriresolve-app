@@ -1,0 +1,21 @@
+{
+  "name": "agriresolve-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AgriResolve Protocol - Full-Stack dApp, SDK, and AI Arbiter Indexer Workspace",
+  "scripts": {
+    "build": "pnpm --filter @agriresolve/sdk build && pnpm --filter agriresolve-web build && pnpm --filter @agriresolve/indexer build",
+    "test": "pnpm --filter @agriresolve/sdk test && pnpm --filter @agriresolve/indexer test",
+    "lint": "pnpm --filter agriresolve-web lint",
+    "typecheck": "pnpm --filter @agriresolve/sdk exec tsc --noEmit && pnpm --filter agriresolve-web exec tsc --noEmit && pnpm --filter @agriresolve/indexer exec tsc --noEmit",
+    "dev:web": "pnpm --filter agriresolve-web dev",
+    "dev:indexer": "pnpm --filter @agriresolve/indexer dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
