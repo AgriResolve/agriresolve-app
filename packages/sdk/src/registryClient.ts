@@ -1,4 +1,5 @@
 import {
+  Account,
   Address,
   Contract,
   Keypair,
@@ -38,7 +39,7 @@ export class RegistryClient {
    * Helper to perform read-only simulation
    */
   private async readCall(method: string, args: xdr.ScVal[] = []): Promise<xdr.ScVal | null> {
-    const account = new rpc.Account(
+    const account = new Account(
       "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWHF",
       "0"
     );
@@ -85,15 +86,13 @@ export class RegistryClient {
       throw new Error(`Transaction submission error: ${JSON.stringify(sendRes)}`);
     }
 
-    let status = sendRes.status;
     let pollCount = 0;
-    while (status === "PENDING" && pollCount < 30) {
+    while (pollCount < 30) {
       await new Promise((r) => setTimeout(r, 1000));
       const txRes = await this.server.getTransaction(sendRes.hash);
-      status = txRes.status;
-      if (status === "SUCCESS") {
+      if (txRes.status === rpc.Api.GetTransactionStatus.SUCCESS) {
         return sendRes.hash;
-      } else if (status === "FAILED") {
+      } else if (txRes.status === rpc.Api.GetTransactionStatus.FAILED) {
         throw new Error(`Transaction failed on ledger: ${sendRes.hash}`);
       }
       pollCount++;
