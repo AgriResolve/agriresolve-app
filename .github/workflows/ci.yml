@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  "Verify TypeScript Frontend & SDK":
+  verify_frontend_sdk:
     name: Verify TypeScript Frontend & SDK
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +50,7 @@ jobs:
           NEXT_PUBLIC_ESCROW_CONTRACT_ID: "CCPZFPNUQGNT5O6H3VWT2H23CLXF2POF5QYDAD4HPOB2RRKSHO63OIXC"
           NEXT_PUBLIC_DISPUTE_CONTRACT_ID: "CCBQBMQFQPRRMOQLPNYSIBGTL7AOXXQAAIADXE2YYTZHSUSDS6Z4ES5N"
 
-  "Verify Indexer & AI Oracle":
+  verify_indexer_oracle:
     name: Verify Indexer & AI Oracle
     runs-on: ubuntu-latest
     steps:
