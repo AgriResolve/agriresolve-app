@@ -93,9 +93,13 @@ export class SorobanEventPoller {
             data = ev.value.toXDR("base64");
           }
 
+          const contractIdStr = ev.contractId
+            ? (typeof ev.contractId === "string" ? ev.contractId : (ev.contractId as any).contractId ? (ev.contractId as any).contractId() : String(ev.contractId))
+            : "";
+
           const parsed: PolledEvent = {
             id: ev.id,
-            contractId: ev.contractId,
+            contractId: contractIdStr,
             ledger: ev.ledger,
             ledgerClosedAt: ev.ledgerClosedAt,
             topic: topics,

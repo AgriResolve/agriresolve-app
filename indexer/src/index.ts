@@ -7,7 +7,7 @@ import { SorobanEventPoller } from "./eventPoller";
 
 dotenv.config();
 
-const app = express();
+const app: express.Express = express();
 app.use(cors());
 app.use(express.json());
 
@@ -46,7 +46,7 @@ app.post("/api/disputes/:escrowId/investigate", async (req: Request, res: Respon
     }
 
     const tradeTerms: TradeTerms = {
-      escrowId,
+      escrowId: BigInt(escrowId),
       totalAmount: BigInt(terms.totalAmount || "0"),
       contractQuantityKg: Number(terms.contractQuantityKg || 10000),
       contractPricePerKg: Number(terms.contractPricePerKg || 1),
