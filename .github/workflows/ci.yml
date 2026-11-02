@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  "Verify TypeScript Frontend & SDK":
+    name: Verify TypeScript Frontend & SDK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build @agriresolve/sdk
+        run: pnpm --filter @agriresolve/sdk build
+
+      - name: Run @agriresolve/sdk unit tests
+        run: pnpm --filter @agriresolve/sdk test
+
+      - name: Typecheck Next.js web application
+        run: pnpm --filter agriresolve-web exec tsc --noEmit
+
+      - name: Build Next.js web application
+        run: pnpm --filter agriresolve-web build
+        env:
+          NEXT_PUBLIC_SOROBAN_RPC_URL: "https://soroban-testnet.stellar.org"
+          NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_REGISTRY_CONTRACT_ID: "CC3OJZP4DCYOOTRJTT66UHMAGR2677JNDBNFQYMREQA2ONDWNRAO75J6"
+          NEXT_PUBLIC_ESCROW_CONTRACT_ID: "CCPZFPNUQGNT5O6H3VWT2H23CLXF2POF5QYDAD4HPOB2RRKSHO63OIXC"
+          NEXT_PUBLIC_DISPUTE_CONTRACT_ID: "CCBQBMQFQPRRMOQLPNYSIBGTL7AOXXQAAIADXE2YYTZHSUSDS6Z4ES5N"
+
+  "Verify Indexer & AI Oracle":
+    name: Verify Indexer & AI Oracle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build @agriresolve/sdk
+        run: pnpm --filter @agriresolve/sdk build
+
+      - name: Build & Typecheck @agriresolve/indexer
+        run: pnpm --filter @agriresolve/indexer build
+
+      - name: Run Indexer AI settlement & math tests
+        run: pnpm --filter @agriresolve/indexer test
