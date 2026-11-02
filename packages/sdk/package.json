@@ -1,0 +1,19 @@
+{
+  "name": "@agriresolve/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for AgriResolve Stellar Soroban smart contracts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsx --test test/sdk.test.ts"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
