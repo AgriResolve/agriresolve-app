@@ -1,0 +1,26 @@
+{
+  "name": "@agriresolve/indexer",
+  "version": "0.1.0",
+  "description": "Soroban Event Poller and Automated AI Arbiter Agent for AgriResolve",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "test": "tsx --test test/investigator.test.ts"
+  },
+  "dependencies": {
+    "@agriresolve/sdk": "workspace:*",
+    "@stellar/stellar-sdk": "^14.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
