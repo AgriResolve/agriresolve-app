@@ -21,11 +21,13 @@ Full-stack agricultural trade escrow interface, official TypeScript Soroban SDK,
 
 The application workspace connects directly to live smart contracts deployed and initialized on Stellar Testnet:
 
-| Contract Name | Contract ID | Explorer Link | Status |
-|---|---|---|---|
-| `agriresolve-registry` | `CC3OJZP4DCYOOTRJTT66UHMAGR2677JNDBNFQYMREQA2ONDWNRAO75J6` | [View on Stellar.Expert](https://stellar.expert/explorer/testnet/contract/CC3OJZP4DCYOOTRJTT66UHMAGR2677JNDBNFQYMREQA2ONDWNRAO75J6) | Active |
-| `agriresolve-escrow` | `CCPZFPNUQGNT5O6H3VWT2H23CLXF2POF5QYDAD4HPOB2RRKSHO63OIXC` | [View on Stellar.Expert](https://stellar.expert/explorer/testnet/contract/CCPZFPNUQGNT5O6H3VWT2H23CLXF2POF5QYDAD4HPOB2RRKSHO63OIXC) | Active |
-| `agriresolve-dispute` | `CCBQBMQFQPRRMOQLPNYSIBGTL7AOXXQAAIADXE2YYTZHSUSDS6Z4ES5N` | [View on Stellar.Expert](https://stellar.expert/explorer/testnet/contract/CCBQBMQFQPRRMOQLPNYSIBGTL7AOXXQAAIADXE2YYTZHSUSDS6Z4ES5N) | Active |
+| Contract Name | Role & Responsibility | Status |
+|---|---|---|
+| `agriresolve-registry` | Participant identity, commodity quality thresholds, and token whitelist | Active (Testnet) |
+| `agriresolve-escrow` | SEP-41 collateral custody, delivery confirmations, and split disbursements | Active (Testnet) |
+| `agriresolve-dispute` | Evidence dossiers, arbitration status, and cross-contract resolution | Active (Testnet) |
+
+> Contract addresses are configured via environment variables (`.env.local` / `.env`). See `.env.example` for deployment configuration.
 
 ---
 
