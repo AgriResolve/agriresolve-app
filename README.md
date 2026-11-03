@@ -1,5 +1,11 @@
 # AgriResolve Application Workspace (`AgriResolve-app`)
 
+## 🌍 Live Ecosystem & Resources
+* **Web App:** [https://agrires.vercel.app/](https://agrires.vercel.app/)
+* **Documentation Site:** [https://agriresolve.github.io/agriresolve-docs/](https://agriresolve.github.io/agriresolve-docs/)
+* **API / Indexer:** [https://agriresolve-app.onrender.com/health](https://agriresolve-app.onrender.com/health)
+* **Demo Video:** [Watch on Google Drive](https://drive.google.com/file/d/19gYJMcZit6NssLxwmhBllQecmnPoG_F8/view)
+
 [![CI Status](https://github.com/AgriResolve/AgriResolve-app/actions/workflows/ci.yml/badge.svg)](https://github.com/AgriResolve/AgriResolve-app/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Stellar Protocol](https://img.shields.io/badge/Stellar-Protocol%2022%20%2F%2029-blue.svg)](https://stellar.org/)
